@@ -155,7 +155,7 @@ def similar_name_match(source, target, tokenize) -> dict:
             to_exclude.add(res.catalog_id)
         # Looks for sets contained in our set of tokens
         for res in data_gathering.tokens_fulltext_search(target, False, tokenized):
-            res_tokenized = text_utils.tokenize(res.tokens)
+            res_tokenized = res.tokens.split(' ')
             if len(res_tokenized) > 1 and res_tokenized.issubset(tokenized):
                 matches[qid].append(res.catalog_id)
 
